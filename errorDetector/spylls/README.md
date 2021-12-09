@@ -1,0 +1,1 @@
+# SinSpell2

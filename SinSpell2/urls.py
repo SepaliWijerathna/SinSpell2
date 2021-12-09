@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from errorCorrector.views import Index, Suggestions
+from errorDetector.views import Detector
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',Index),
     path('suggestions/',Suggestions),
+    path('detector/',Detector),
 ]

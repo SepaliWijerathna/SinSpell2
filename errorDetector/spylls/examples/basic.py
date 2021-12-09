@@ -6,6 +6,7 @@ from spylls.hunspell import Dictionary
 dictionary = Dictionary.from_files(str(path))
 
 def detector_fun(word):
+    print(word)
     file_content = word
    
     characters = [".",",","%","!","@","&"]
@@ -13,20 +14,20 @@ def detector_fun(word):
 
 
     word_list = test_string.split(" ")
-    # print(word_list)
+    print(word_list)
     incorrect_word_list = []
     result = file_content
 
     for word in word_list:
         if dictionary.lookup(word):
             print("correct")
-            continue
         else: 
             print("Incorrect")   
             marked = "\u0332".join(word+ " ")
             result = result.replace(word,marked)
             incorrect_word_list.append(word)
-
+    
+    return incorrect_word_list
     # print('Output: '+result+'\n')
     # print("Suggestions :")
     # for incorrect_word in incorrect_word_list:
