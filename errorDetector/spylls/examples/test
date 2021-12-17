@@ -1,0 +1,65 @@
+එම සංවර්දන වැඩසටහනට අදාලව ඉල්ලුම්කරු විසින් සම්පූර්න කල යුතු අයදුම් පත්‍රය සමග අදාල ලියකියවිලි ඉදිරිපත් කරණ මෙන් කාරුනිකව ඉල්ලා සිටිමි
+
+....................................................................
+
+python -u "E:\FYP\spylls-master\examples\basic.py"
+
+....................................................................
+
+Educational Publications D̲e̲p̲s̲r̲t̲m̲e̲n̲t̲ , having a direct connection with the school community who represents approximatel
+y 20% of the total population of the country, accomplishes its service to f̲u̲l̲f̲i̲l̲  the needs of compulsory education which 
+is one of the basic rights of students and to offer them equal opportunities in education. The department performs a unique 
+role in providing students with t̲e̲s̲t̲b̲o̲o̲k̲s̲  and supplying the student p̲o̲p̲l̲a̲t̲i̲o̲n̲  the T̲e̲c̲h̲e̲r̲  Instructional Manuals in time.
+
+Suggestions :
+['Department', 'Deportment']
+['fulfill', 'willful']
+['test books', 'test-books', 'textbooks', 'bookstores', 'notebooks', 'bookstore']
+['population', 'postulation', 'plantation', 'pollination', 'copulation']
+['Lecher', 'Etcher', 'Teacher', 'Tether', 'Teched', 'Cheater', 'Chester', 'Tech', 'Chert']
+
+....................................................................
+
+PS E:\FYP\spylls-master> python -u "E:\FYP\spylls-master\examples\basic.py"
+Enter your words: එම සංවර්දන වැඩසටහනට අදාලව ඉල්ලුම්කරු විසින් සම්පූර්න කල යුතු අයදුම් පත්‍රය සමග අදාල 
+ලියකියවිලි ඉදිරිපත් කරණ මෙන් කාරුනිකව ඉල්ලා සිටිමි.
+Output: එම ස̲ං̲ව̲ර්̲̲ද̲න̲  වැඩසටහනට අ̲ද̲ා̲ල̲ව̲  ඉල්ලුම්කරු විසින් ස̲ම්̲̲ප̲ූ̲ර්̲̲න̲  කල යුතු අයදුම් පත්‍රය සමග අ̲ද̲ා̲ල̲  ලියකියවිලි 
+ඉදිරිපත් කරණ මෙන් ක̲ා̲ර̲ු̲න̲ි̲ක̲ව̲  ඉල්ලා සිටිමි.   
+
+Suggestions :
+['සංවර්ධන']
+['අදාළව', 'අදවලා']
+['සම්පූර්ණ']
+['අදාළ']
+['කාරුණිකව']
+
+....................................................................
+Enter your words: එම සංවර්දන වැඩසටහනට අදාලව ඉල්ලුම්කරු විසින් සම්පූර්න කල යුතු අයදුම් පත්‍රය සමග අදාල ලියකියවිලි ඉදිරිපත් කරණ මෙ
+න් කාරුනිකව ඉල්ලා සිටිමි
+එම ස̲ං̲ව̲ර්̲̲ද̲න̲  වැඩසටහනට අ̲ද̲ා̲ල̲ව̲  ඉ̲ල්̲̲ල̲ු̲ම්̲̲ක̲ර̲ු̲  විසින් ස̲ම්̲̲ප̲ූ̲ර්̲̲න̲  කල යුතු අයදුම් ප̲ත්̲̲‍̲ර̲ය̲  සමග අ̲ද̲ා̲ල̲
+  ලියකියවිලි ඉදිරිපත් කරණ මෙන් ක̲ා̲ර̲ු̲න̲ි̲ක̲ව̲  ඉල්ලා සිටිමි
+
+Suggestions :
+['සංවර්ධන']
+['අදාළව', 'අදවලා']
+['ඉල්ලූම්කරු', 'ඉල්ලුම් කරු', 'ඉල්ලුම්පත්']
+['සම්පූර්ණ']
+['පත\u200d්\u200dරය', 'පත්තරය']
+['අදාළ']
+['කාරුණිකව']
+
+....................................................................
+Enter your words: එම සංවර්දන වැඩසටහනට අදාලව ඉල්ලුම්කරු විසින් සම්පූර්න කල යුතු අයදුම් පත්‍රය සමග අදාල ලියකියවිලි ඉදිරිපත් කරණ මෙ
+න් කාරුනිකව ඉල්ලා සිටිමි
+Correct_word_list :
+['එම', 'වැඩසටහනට', 'විසින්', 'කල', 'යුතු', 'අයදුම්', 'සමග', 'ලියකියවිලි', 'ඉදිරිපත්', 'කරණ', 'මෙන්', 'ඉල්ලා', 'සිටිමි']
+Incorrect_word_list :
+['සංවර්දන', 'අදාලව', 'ඉල්ලුම්කරු', 'සම්පූර්න', 'පත්\u200dරය', 'අදාල', 'කාරුනිකව']
+Suggestions :
+['සංවර්ධන']
+['අදාළව', 'අදවලා']
+['ඉල්ලූම්කරු', 'ඉල්ලුම් කරු', 'ඉල්ලුම්පත්']
+['සම්පූර්ණ']
+['පත\u200d්\u200dරය', 'පත්තරය']
+['අදාළ']
+['කාරුණිකව']
