@@ -76,7 +76,7 @@ def insert_letter(word):
 def get_corrections_insert(my_word, word_count_dict):
 
     suggestions = []
-    n_best = []
+    my_word_list = []
     edit_one_letter = insert_letter(my_word)
     # print(edit_one_letter)
     for word1 in edit_one_letter:
@@ -88,8 +88,10 @@ def get_corrections_insert(my_word, word_count_dict):
             del_error.append(my_word)
             # print(suggestions)
             suggestions.append(del_error)
-
-    return suggestions
+        else:
+            my_word_list.append(word1[0])
+    # print(my_word_list)
+    return suggestions ,my_word_list 
 
 """Switch letters"""
 def switch_letter(word):
@@ -110,7 +112,7 @@ def switch_letter(word):
 def get_corrections_switch(my_word, word_count_dict):
 
     suggestions = []
-    n_best = []
+    my_word_list = []
     edit_one_letter = switch_letter(my_word)
     # print(edit_one_letter)
 
@@ -121,8 +123,9 @@ def get_corrections_switch(my_word, word_count_dict):
             switch_error.append(word1[1])
             switch_error.append(my_word)
             suggestions.append(switch_error)
-
-    return suggestions
+        else:
+            my_word_list.append(word1[0])
+    return suggestions, my_word_list
 
 # print(get_corrections_switch("ලමයා", word_count_dict))
 
@@ -159,9 +162,8 @@ def replace_letter(word):
 def get_corrections_replace(my_word, word_count_dict):
 
     suggestions = []
-    n_best = []
+    my_word_list = []
     edit_one_letter = replace_letter(my_word)
-
     for word1 in edit_one_letter:
         if word1[0] in word_count_dict and word1 not in suggestions:
             replace_error = []
@@ -169,8 +171,9 @@ def get_corrections_replace(my_word, word_count_dict):
             replace_error.append(word1[1])
             replace_error.append(my_word)
             suggestions.append(replace_error)
-
-    return suggestions
+        else:
+            my_word_list.append(word1[0])
+    return suggestions,my_word_list
 
 
 """Delete letters"""
@@ -196,7 +199,7 @@ def delete_letter(word):
 def get_corrections_delete(my_word, word_count_dict):
 
     suggestions = []
-    n_best = []
+    my_word_list = []
     edit_one_letter = delete_letter(my_word)
     # print(edit_one_letter)
 
@@ -208,27 +211,53 @@ def get_corrections_delete(my_word, word_count_dict):
             insert_error.append(my_word)
             # print(suggestions)
             suggestions.append(insert_error)
+        else:
+            my_word_list.append(word1[0])
+    return suggestions, my_word_list
 
-    return suggestions
+def edit_two_letter(before_edit_two_set_list,word_count_dict):
+    all_edit_two_set_list=[]
+    for word in before_edit_two_set_list:
+        
+        switch_word_l ,my_word_switch= get_corrections_switch(word,word_count_dict)
+        delete_word_l ,my_word_delete= get_corrections_delete(word,word_count_dict)
+        replace_word_l, my_word_replace= get_corrections_replace(word,word_count_dict)
+        insert_word_l , my_word_insert= get_corrections_insert(word,word_count_dict)
+        edit_two_set_list = switch_word_l+delete_word_l+replace_word_l+insert_word_l
+        for x in edit_two_set_list:
+            if x !=[]:
+                all_edit_two_set_list.append(x)
+    print(all_edit_two_set_list)
+
+    print("hi")
+    return all_edit_two_set_list
+
 
 """Edit one letter"""
 def edit_one_letter(word, word_count_dict):
    
     edit_one_set = set()
    
-    switch_word_l = get_corrections_switch(word,word_count_dict)
-    delete_word_l = get_corrections_delete(word,word_count_dict)
-    replace_word_l= get_corrections_replace(word,word_count_dict)
-    insert_word_l= get_corrections_insert(word,word_count_dict)
+    switch_word_l ,my_word_switch= get_corrections_switch(word,word_count_dict)
+    delete_word_l ,my_word_delete= get_corrections_delete(word,word_count_dict)
+    replace_word_l, my_word_replace= get_corrections_replace(word,word_count_dict)
+    insert_word_l , my_word_insert= get_corrections_insert(word,word_count_dict)
     edit_one_set_list = switch_word_l+delete_word_l+replace_word_l+insert_word_l
-   
-    return edit_one_set_list
+    before_edit_two_set_list=my_word_switch+my_word_delete+my_word_replace+my_word_insert
+    # print(before_edit_two_set_list)
+    edit_two_set_list = edit_two_letter(before_edit_two_set_list,word_count_dict)
+    # print(edit_two_letters)
+    edit_all_set_list=edit_one_set_list+edit_two_set_list
+    return edit_all_set_list
+
 
 """Get corrections"""
 def get_corrections(my_word, word_count_dict,error_count_dict):
+   
     suggestions = []
     n_best = []
     tmp_edit_one_set = edit_one_letter(my_word,word_count_dict)
+    # tmp_edit_two_set=edit_two_letters(my_word_list,word_count_dict)
     # print(tmp_edit_one_set)
     count_all=0
     for words in tmp_edit_one_set:
@@ -254,11 +283,12 @@ def ranking(tmp_corrections):
     return rank_dic
 
 def Suggestions(incorrect_word_list):
-   
+    
     vocab = process_data("errorCorrector/data/correct_unique_words.txt")
     type = process_data("errorCorrector/data/error_analyser.txt")
     word_count_dict = get_count(vocab)
     error_count_dict = get_count(type)
+<<<<<<< Updated upstream
     for word in incorrect_word_list:
         my_word=word
         tmp_corrections = get_corrections(my_word, word_count_dict,error_count_dict)
@@ -266,3 +296,20 @@ def Suggestions(incorrect_word_list):
     # for i in Suggestions:
     #     word=i[0][0]
         return Suggestions
+=======
+    my_word="ලමයා"
+    tmp_corrections = get_corrections(my_word, word_count_dict,error_count_dict)
+    # Suggestions=ranking(tmp_corrections)
+    return HttpResponse(tmp_corrections)
+    # for word in incorrect_word_list:
+    #     my_word=word
+    #     tmp_corrections = get_corrections(my_word, word_count_dict,error_count_dict)
+    #     #print("hiii", tmp_corrections)
+    #     Suggestions=ranking(tmp_corrections)
+    #     #print(Suggestions)
+    # # for i in Suggestions:
+    # #     word=i[0][0]
+    #     return Suggestions
+
+
+>>>>>>> Stashed changes
