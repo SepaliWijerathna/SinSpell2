@@ -288,7 +288,6 @@ def Suggestions(incorrect_word_list):
     type = process_data("errorCorrector/data/error_analyser.txt")
     word_count_dict = get_count(vocab)
     error_count_dict = get_count(type)
-<<<<<<< Updated upstream
     for word in incorrect_word_list:
         my_word=word
         tmp_corrections = get_corrections(my_word, word_count_dict,error_count_dict)
@@ -296,20 +295,3 @@ def Suggestions(incorrect_word_list):
     # for i in Suggestions:
     #     word=i[0][0]
         return Suggestions
-=======
-    my_word="ලමයා"
-    tmp_corrections = get_corrections(my_word, word_count_dict,error_count_dict)
-    # Suggestions=ranking(tmp_corrections)
-    return HttpResponse(tmp_corrections)
-    # for word in incorrect_word_list:
-    #     my_word=word
-    #     tmp_corrections = get_corrections(my_word, word_count_dict,error_count_dict)
-    #     #print("hiii", tmp_corrections)
-    #     Suggestions=ranking(tmp_corrections)
-    #     #print(Suggestions)
-    # # for i in Suggestions:
-    # #     word=i[0][0]
-    #     return Suggestions
-
-
->>>>>>> Stashed changes
