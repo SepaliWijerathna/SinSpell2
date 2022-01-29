@@ -2,35 +2,6 @@ SET UTF-8
 
 WORDCHARS ්ාෘුැූෑිීෙේෛොෝෞෘෲෟෳංඃ
 
-TRY ්ාෘුැූෑිීෙ
-
-REP 25
-REP න ණ
-REP ණ න
-REP ල ළ
-REP ළ ල
-REP ස ෂ
-REP ෂ ස
-REP ස ශ
-REP ශ ස
-REP ච ඡ
-REP ඡ ච
-REP බ භ
-REP භ බ
-REP ද ධ
-REP ධ ද
-REP ර් ්‍ර
-REP ට ඨ
-REP ඨ ට
-REP ක ඛ
-REP ඛ ක
-REP ඩ ඪ
-REP ඪ ඩ
-REP ඉ ඊ
-REP ඊ ඉ
-REP ප ඵ
-REP ඵ ප
-	
 COMPOUNDFLAG 9
 COMPOUNDMIN 1
 FLAG num
