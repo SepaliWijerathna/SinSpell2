@@ -7,17 +7,13 @@ import pandas as pd
 import io
 
 from django.shortcuts import render, HttpResponse
-from errorCorrector.views import Suggestions
+
 
 from API.spylls.examples.basic import detector_fun
 import json
 
 
 def formatSuggestions(suggestions, incorrect_word_list, correct_word_list, word_list):
-    print(suggestions)
-    print(incorrect_word_list)
-    print(correct_word_list)
-    print(word_list)
     result_all = []
     for i in range(len(word_list)):
         if word_list[i] in correct_word_list:
@@ -28,7 +24,6 @@ def formatSuggestions(suggestions, incorrect_word_list, correct_word_list, word_
             }
             result_all.append(result)
         else:
-            print("bye")
             j=incorrect_word_list.index(word_list[i])
             result = {
                 "word": word_list[i],
@@ -315,8 +310,8 @@ def ranking(tmp_corrections):
 
 
 def Suggestions(incorrect_word_list):
-    vocab = process_data("errorCorrector/data/correct_unique_words.txt")
-    type = process_data("errorCorrector/data/error_analyser.txt")
+    vocab = process_data("API/data/correct_unique_words.txt")
+    type = process_data("API/data/error_analyser.txt")
     word_count_dict = get_count(vocab)
     error_count_dict = get_count(type)
     all_suggetions = []
