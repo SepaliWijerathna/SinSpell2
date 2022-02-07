@@ -16,19 +16,21 @@ def detector_fun(word):
     word_list = test_string.split(" ")
     print(word_list)
     incorrect_word_list = []
+    correct_word_list = []
     result = file_content
 
     for word in word_list:
         if dictionary.lookup(word):
-            print("correct")
+            # print("correct")
+            correct_word_list.append(word)
         else: 
-            print("Incorrect")   
-            marked = "\u0332".join(word+ " ")
-            result = result.replace(word,marked)
+            # print("Incorrect")   
+            # marked = "\u0332".join(word+ " ")
+            # result = result.replace(word,marked)
             incorrect_word_list.append(word)
             print(incorrect_word_list)
     
-    return incorrect_word_list
+    return incorrect_word_list,correct_word_list,word_list
     # print('Output: '+result+'\n')
     # print("Suggestions :")
     # for incorrect_word in incorrect_word_list:
