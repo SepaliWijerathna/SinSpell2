@@ -262,17 +262,17 @@ def ranking(tmp_corrections):
     return rank_dic
 
 def Suggestions(incorrect_word_list):
-   
     vocab = process_data("errorCorrector/data/correct_unique_words.txt")
     type = process_data("errorCorrector/data/error_analyser.txt")
     word_count_dict = get_count(vocab)
     error_count_dict = get_count(type)
-    for word in incorrect_word_list:
-        my_word=word
-        tmp_corrections = get_corrections(my_word, word_count_dict,error_count_dict)
+    # for word in incorrect_word_list:
+    my_word="ලමයා"
+    tmp_corrections = get_corrections(my_word, word_count_dict,error_count_dict)
         #print("hiii", tmp_corrections)
-        Suggestions=ranking(tmp_corrections)
+    Suggestions=ranking(tmp_corrections)
         #print(Suggestions)
     # for i in Suggestions:
     #     word=i[0][0]
-        return Suggestions
+    return HttpResponse(Suggestions)
+        # return Suggestions
