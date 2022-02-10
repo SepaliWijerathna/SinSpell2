@@ -1,51 +1,61 @@
+from django.http import JsonResponse
 from django.http.response import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import render, HttpResponse
-import re
+from rest_framework.decorators import api_view
 from collections import Counter
 import numpy as np
 import pandas as pd
 import io
-
 from django.shortcuts import render, HttpResponse
-
-
 from API.spylls.examples.basic import detector_fun
-import json
+from .serializer import CorrectorSerializer
+from .serializer import correction
+import urllib.request
 
+
+
+@api_view(['GET', 'POST'])
+def listcorrection(request):
+    if request.method == "GET":
+        word = str(request.GET.get("words",False))
+        correctionList=Detector(word)
+        obj_all=[]
+        for i in correctionList:
+            obj= correction(word=i[0],status=i[1],suggestions=i[2])
+            obj_all.append(obj)
+        print(obj_all)
+        serializer_class=CorrectorSerializer(obj_all,many=True)
+        y= serializer_class.data
+        return JsonResponse(y,safe=False)
 
 def formatSuggestions(suggestions, incorrect_word_list, correct_word_list, word_list):
     result_all = []
     for i in range(len(word_list)):
         if word_list[i] in correct_word_list:
-            result = {
-                "word": word_list[i],
-                "status": "correct",
-                "suggestions": [ ]
-            }
+            result = []
+            result.append(word_list[i])
+            result.append("correct")
+            result.append([ ])
             result_all.append(result)
         else:
+            result=[]
             j=incorrect_word_list.index(word_list[i])
-            result = {
-                "word": word_list[i],
-                "status": "incorrect",
-                "suggestions": suggestions[j]
-            }
+            result.append(word_list[i])
+            result.append("incorrect")
+            result.append(suggestions[j])
             result_all.append(result)
     return result_all
 
 
-def Detector(request):
-    word = "විශාල ලමයා මෙයට"
+def Detector(word):
     incorrect_word_list, correct_word_list, word_list = detector_fun(word)
     
     if incorrect_word_list != []:
         suggestions = Suggestions(incorrect_word_list)
-
-    response_data = formatSuggestions(
-        suggestions, incorrect_word_list, correct_word_list, word_list)
    
+    response_data = formatSuggestions( suggestions, incorrect_word_list, correct_word_list, word_list)
 
-    return HttpResponse(response_data)
+    return (response_data)
     # return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 
@@ -305,7 +315,7 @@ def ranking(tmp_corrections):
     rank_dic_suggestions = []
     for i in rank_dic:
         rank_dic_suggestions.append(i[0])
-    print(rank_dic_suggestions)
+    # print(rank_dic_suggestions)
     return rank_dic_suggestions
 
 
@@ -321,4 +331,5 @@ def Suggestions(incorrect_word_list):
             my_word, word_count_dict, error_count_dict)
         Suggestions = ranking(tmp_corrections)
         all_suggetions.append(Suggestions)
+    print(all_suggetions)
     return all_suggetions
