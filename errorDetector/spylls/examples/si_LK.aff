@@ -131,8 +131,8 @@ SFX 11 0 ුන්ගේ  .
 SFX 11 0 ුන්ගේත්  .
 SFX 11 0 ුන්ගේයි  .
 SFX 11 0 ුන්ගේය  .
-SFX 12 Y 91
-SFX 12 0 DelVී  .
+SFX 12 Y 71
+SFX 12 ි ී  .
 SFX 12 0 ය  .
 SFX 12 0 යත්  .
 SFX 12 0 යයි  .
@@ -182,34 +182,18 @@ SFX 12 0 යො  .
 SFX 12 0 යොත්  .
 SFX 12 0 යොයි  .
 SFX 12 0 යොය  .
-SFX 12 0 DelVීහු  .
-SFX 12 0 DelVීහුත්  .
-SFX 12 0 DelVීහුයි  .
-SFX 12 0 DelVීහුය  .
 SFX 12 0 යන්  .
 SFX 12 0 යනුත්  .
 SFX 12 0 යනුයි  .
 SFX 12 0 යන්ය  .
-SFX 12 0 DelVීන්  .
-SFX 12 0 DelVීනුත්  .
-SFX 12 0 DelVීනුයි  .
-SFX 12 0 DelVීන්ය  .
 SFX 12 0 යන්ට  .
 SFX 12 0 යන්ටත්  .
 SFX 12 0 යන්ටයි  .
 SFX 12 0 යන්ටය  .
-SFX 12 0 DelVීන්ට  .
-SFX 12 0 DelVීන්ටත්  .
-SFX 12 0 DelVීන්ටයි  .
-SFX 12 0 DelVීන්ටය  .
 SFX 12 0 යන්ගෙන්  .
 SFX 12 0 යන්ගෙනුත්  .
 SFX 12 0 යන්ගෙනි  .
 SFX 12 0 යන්ගෙන්ය  .
-SFX 12 0 DelVීන්ගෙන්  .
-SFX 12 0 DelVීන්ගෙනුත්  .
-SFX 12 0 DelVීන්ගෙනි  .
-SFX 12 0 DelVීන්ගෙන්ය  .
 SFX 12 0 යන්ගේ  .
 SFX 12 0 යන්ගේත්  .
 SFX 12 0 යන්ගේයි  .
@@ -218,10 +202,6 @@ SFX 12 0 යන්ගෙ  .
 SFX 12 0 යන්ගෙත්  .
 SFX 12 0 යන්ගෙයි  .
 SFX 12 0 යන්ගෙය  .
-SFX 12 0 DelVීන්ගේ  .
-SFX 12 0 DelVීන්ගේත්  .
-SFX 12 0 DelVීන්ගේයි  .
-SFX 12 0 DelVීන්ගේය  .
 SFX 12 0 යනි  .
 SFX 13 Y 70
 SFX 13 0 ය  .
@@ -648,10 +628,10 @@ SFX 18 0 ුන්ගේ  .
 SFX 18 0 ුන්ගේත්  .
 SFX 18 0 ුන්ගේයි  .
 SFX 18 0 ුනි  .
-SFX 18 0 ^Gemු   .
-SFX 18 0 ^Gemුත්   .
-SFX 18 0 ^Gemුයි   .
-SFX 19 Y 116
+SFX 18 0 ු   .
+SFX 18 0 ුත්   .
+SFX 18 0 ුයි   .
+SFX 19 Y 96
 SFX 19 0 යා  .
 SFX 19 0 යාත්  .
 SFX 19 0 යායි  .
@@ -726,34 +706,19 @@ SFX 19 0 යෝය  .
 SFX 19 0 යොත්  .
 SFX 19 0 යොයි  .
 SFX 19 0 යොය  .
-SFX 19 0 ^DelVීහු  .
-SFX 19 0 ^DelVීහුත්  .
-SFX 19 0 ^DelVීහුයි  .
-SFX 19 0 ^DelVීහුය  .
+SFX 19 0 ීහු  .
 SFX 19 0 යන්  .
 SFX 19 0 යනුත්  .
 SFX 19 0 යනුයි  .
 SFX 19 0 යන්ය  .
-SFX 19 0 ^DelVීන්  .
-SFX 19 0 ^DelVීනුත්  .
-SFX 19 0 ^DelVීනුයි  .
-SFX 19 0 ^DelVීන්ය  .
 SFX 19 0 යන්ට  .
 SFX 19 0 යන්ටත්  .
 SFX 19 0 යන්ටයි  .
 SFX 19 0 යන්ටය  .
-SFX 19 0 ^DelVීන්ට  .
-SFX 19 0 ^DelVීන්ටත්  .
-SFX 19 0 ^DelVීන්ටයි  .
-SFX 19 0 ^DelVීන්ටය  .
 SFX 19 0 යන්ගෙන්  .
 SFX 19 0 යන්ගෙනුත්  .
 SFX 19 0 යන්ගෙනි  .
 SFX 19 0 යන්ගෙන්ය  .
-SFX 19 0 ^DelVීන්ගෙන්  .
-SFX 19 0 ^DelVීන්ගෙනුත්  .
-SFX 19 0 ^DelVීන්ගෙනි  .
-SFX 19 0 ^DelVීන්ගෙන්ය  .
 SFX 19 0 යන්ගේ  .
 SFX 19 0 යන්ගේත්  .
 SFX 19 0 යන්ගේයි  .
@@ -762,12 +727,7 @@ SFX 19 0 යන්ගෙ  .
 SFX 19 0 යන්ගෙත්  .
 SFX 19 0 යන්ගෙයි  .
 SFX 19 0 යන්ගෙය  .
-SFX 19 0 ^DelVීන්ගේ  .
-SFX 19 0 ^DelVීන්ගේත්  .
-SFX 19 0 ^DelVීන්ගේයි  .
-SFX 19 0 ^DelVීන්ගේය  .
 SFX 19 0 යනි  .
-SFX 19 0 ^DelVීනි  .
 SFX 20 Y 44
 SFX 20 0 ා  .
 SFX 20 0 ාත්   .
@@ -813,52 +773,53 @@ SFX 20 0 න්ගේ  .
 SFX 20 0 න්ගේත්  .
 SFX 20 0 න්ගේයි  .
 SFX 20 0 නි  .
-SFX 21 Y 45
-SFX 21 0 ^DelV^Gemා  .
-SFX 21 0 ^DelV^Gemාත්   .
-SFX 21 0 ^DelV^Gemායි   .
-SFX 21 0 ^DelV^Gemෙක්  .
-SFX 21 0 ^DelV^Gemෙකුත්  .
-SFX 21 0 ^DelV^Gemෙකි  .
-SFX 21 0 ^DelV^Gemෙකු  .
-SFX 21 0 ^DelV^Gemාට  .
-SFX 21 0 ^DelV^Gemාටත්  .
-SFX 21 0 ^DelV^Gemාටයි  .
-SFX 21 0 ^DelV^Gemෙකුට  .
-SFX 21 0 ^DelV^Gemෙකුටත්  .
-SFX 21 0 ^DelV^Gemෙකුටයි  .
-SFX 21 0 ^DelV^Gemාගෙන්  .
-SFX 21 0 ^DelV^Gemාගෙනුත්  .
-SFX 21 0 ^DelV^Gemාගෙනි  .
-SFX 21 0 ^DelV^Gemෙකුගෙන්  .
-SFX 21 0 ^DelV^Gemෙකුගෙනුත්  .
-SFX 21 0 ^DelV^Gemෙකුගෙනි  .
-SFX 21 0 ^DelV^Gemාගේ  .
-SFX 21 0 ^DelV^Gemාගේත්  .
-SFX 21 0 ^DelV^Gemාගේයි  .
-SFX 21 0 ^DelV^Gemගෙ  .
-SFX 21 0 ^DelV^Gemගෙත්  .
-SFX 21 0 ^DelV^Gemගෙයි  .
-SFX 21 0 ^DelV^Gemෙකුගේ  .
-SFX 21 0 ^DelV^Gemෙකුගේත්  .
-SFX 21 0 ^DelV^Gemෙකුගේයි  .
-SFX 21 0 ^DelV^Gemො  .
-SFX 21 0 ^DelV^Gemෝ   .
-SFX 21 0 ^DelV^Gemෝත්   .
-SFX 21 0 ^DelV^Gemෝයි   .
-SFX 21 0 ^DelV^Gemන්   .
-SFX 21 0 ^DelV^Gemනුත්   .
-SFX 21 0 ^DelV^Gemනි   .
-SFX 21 0 ^DelV^Gemන්ට  .
-SFX 21 0 ^DelV^Gemන්ටත්  .
-SFX 21 0 ^DelV^Gemන්ටයි  .
-SFX 21 0 ^DelV^Gemන්ගෙන්  .
-SFX 21 0 ^DelV^Gemන්ගෙනුත්  .
-SFX 21 0 ^DelV^Gemන්ගෙනි  .
-SFX 21 0 ^DelV^Gemන්ගේ  .
-SFX 21 0 ^DelV^Gemන්ගේත්  .
-SFX 21 0 ^DelV^Gemන්ගේයි  .
-SFX 21 0 ^DelV^Gemනි  .
+SFX 21 Y 46
+SFX 21 0 ු  .
+SFX 21 0 ා  .
+SFX 21 0 ාත්   .
+SFX 21 0 ායි   .
+SFX 21 0 ෙක්  .
+SFX 21 0 ෙකුත්  .
+SFX 21 0 ෙකි  .
+SFX 21 0 ෙකු  .
+SFX 21 0 ාට  .
+SFX 21 0 ාටත්  .
+SFX 21 0 ාටයි  .
+SFX 21 0 ෙකුට  .
+SFX 21 0 ෙකුටත්  .
+SFX 21 0 ෙකුටයි  .
+SFX 21 0 ාගෙන්  .
+SFX 21 0 ාගෙනුත්  .
+SFX 21 0 ාගෙනි  .
+SFX 21 0 ෙකුගෙන්  .
+SFX 21 0 ෙකුගෙනුත්  .
+SFX 21 0 ෙකුගෙනි  .
+SFX 21 0 ාගේ  .
+SFX 21 0 ාගේත්  .
+SFX 21 0 ාගේයි  .
+SFX 21 0 ගෙ  .
+SFX 21 0 ගෙත්  .
+SFX 21 0 ගෙයි  .
+SFX 21 0 ෙකුගේ  .
+SFX 21 0 ෙකුගේත්  .
+SFX 21 0 ෙකුගේයි  .
+SFX 21 0 ො  .
+SFX 21 0 ෝ   .
+SFX 21 0 ෝත්   .
+SFX 21 0 ෝයි   .
+SFX 21 0 න්   .
+SFX 21 0 නුත්   .
+SFX 21 0 නි   .
+SFX 21 0 න්ට  .
+SFX 21 0 න්ටත්  .
+SFX 21 0 න්ටයි  .
+SFX 21 0 න්ගෙන්  .
+SFX 21 0 න්ගෙනුත්  .
+SFX 21 0 න්ගෙනි  .
+SFX 21 0 න්ගේ  .
+SFX 21 0 න්ගේත්  .
+SFX 21 0 න්ගේයි  .
+SFX 21 0 නි  .
 SFX 22 Y 48
 SFX 22 0 ැ  .
 SFX 22 0 ා   .
@@ -1321,9 +1282,9 @@ SFX 31 0 කි  .
 SFX 31 0 ෙන්  .
 SFX 31 0 ෙනුත්  .
 SFX 31 0 ෙනි  .
-SFX 31 0  ින්  .
-SFX 31 0  ිනුත්  .
-SFX 31 0  ිනි  .
+SFX 31 0 ින්  .
+SFX 31 0 ිනුත්  .
+SFX 31 0 ිනි  .
 SFX 31 0 කින්  .
 SFX 31 0 කිනුත්  .
 SFX 31 0 කිනි  .
@@ -1357,37 +1318,7 @@ SFX 31 0 ුවලටයි  .
 SFX 31 0 ුවල  .
 SFX 31 0 ුවලත්  .
 SFX 31 0 ුවලයි  .
-SFX 32 Y 41
-SFX 32 0 ^DelV^Gem  .
-SFX 32 0 ^DelV^Gemත්   .
-SFX 32 0 ^DelV^Gemයි   .
-SFX 32 0 ^DelV^Gemක්  .
-SFX 32 0 ^DelV^Gemකුත්  .
-SFX 32 0 ^DelV^Gemකි   .
-SFX 32 0 ^DelV^Gemෙන්   .
-SFX 32 0 ^DelV^Gemෙනුත්   .
-SFX 32 0 ^DelV^Gemෙනි   .
-SFX 32 0 ^DelV^Gemකින්   .
-SFX 32 0 ^DelV^Gemකිනුත්   .
-SFX 32 0 ^DelV^Gemකිනි   .
-SFX 32 0 ^DelV^Gemට  .
-SFX 32 0 ^DelV^Gemටත්  .
-SFX 32 0 ^DelV^Gemටයි  .
-SFX 32 0 ^DelV^Gemකට  .
-SFX 32 0 ^DelV^Gemකටත්  .
-SFX 32 0 ^DelV^Gemකටයි  .
-SFX 32 0 ^DelV^Gemේ  .
-SFX 32 0 ^DelV^Gemේත්  .
-SFX 32 0 ^DelV^Gemේයි  .
-SFX 32 0 ^DelV^Gemෙ  .
-SFX 32 0 ^DelV^Gemෙත්  .
-SFX 32 0 ^DelV^Gemෙයි  .
-SFX 32 0 ^DelV^Gemක  .
-SFX 32 0 ^DelV^Gemකත්  .
-SFX 32 0 ^DelV^Gemකයි  .
-SFX 32 0 ^DelV^Gemෙහි  .
-SFX 32 0 ^DelV^Gemෙහිත්  .
-SFX 32 0 ^DelV^Gemෙහියි  .
+SFX 32 Y 11
 SFX 32 0 ත්   .
 SFX 32 0 යි   .
 SFX 32 0 වලින්   .
@@ -2929,7 +2860,6 @@ SFX 231 0 කරපු .
 SFX 231 0 කරලා .
 SFX 231 0 කරවිය .
 
-
 SFX 232 Y 145 
 SFX 232 0 වෙනවා .
 SFX 232 0 වෙමි .
@@ -3533,6 +3463,138 @@ SFX 234 0 දෙව්වෝලු .
 SFX 234 0 දෙව්වාවේ .
 SFX 234 0 දෙව්වදෙන් .
 
+SFX 235 Y 16
+SFX 235 0 මි  . 
+SFX 235 0 මු  .
+SFX 235 0 හි  .
+SFX 235 0 හු  .
+SFX 235 0 ති  . 
+SFX 235 0 ව  .
+SFX 235 0 පිය  .
+SFX 235 0 පන්  .
+SFX 235 0 ව්  . 
+SFX 235 0 පියව්  .
+SFX 235 0 පල්ලා  .
+SFX 235 0 යිලු  .
+SFX 235 0 තිලු  . 
+SFX 235 0 පුවාවේ  .
+SFX 235 0 පුදෙන්  .
+SFX 235 0 ගේවි  .
+
+SFX 236 Y 72
+SFX 236 0   . 
+SFX 236 0 ා  .
+SFX 236 0 ාව  .
+SFX 236 0 ාපු  . 
+SFX 236 0 ාපිය  .
+SFX 236 0 ාපන්  . 
+SFX 236 0 ාපල්ලා  .
+SFX 236 0 ාපුවාවේ  . 
+SFX 236 0 ාපුදෙන්  .
+SFX 236 0 ාවා .
+SFX 236 0 ාවෙමි .
+SFX 236 0 ාවෙමු .
+SFX 236 0 ාවෙහි .
+SFX 236 0 ාවෙහු .
+SFX 236 0 ාවේය .
+SFX 236 0 ාවාය .
+SFX 236 0 ාහ .
+SFX 236 0 ාවහ .
+SFX 236 0 ාවෝය .
+SFX 236 0 ාවාලු .
+SFX 236 0 ාවේලු .
+SFX 236 0 ාහලු .
+SFX 236 0 ාවහලු .
+SFX 236 0 ාවෝලු .
+SFX 236 0 ාවාවේ .
+SFX 236 0 ාවදෙන් .
+SFX 236 0 ත්  . 
+SFX 236 0 ල්ලා  .
+SFX 236 0 ොපියව්  . 
+SFX 236 0 ේවි   . 
+SFX 236 0 ්නා  .
+SFX 236 0 ්වන  . 
+SFX 236 0 ්වනා  .
+SFX 236 0 ්වපු  . 
+SFX 236 0 ්වා  .
+SFX 236 0 ්වත්ම  .
+SFX 236 0 ්නන .
+SFX 236 0 ්වන්න  .
+SFX 236 0 ්වන්නට  .
+SFX 236 0 ්වත්දී  . 
+SFX 236 0 ්වතොත්  .
+SFX 236 0 ්වතත්  .
+SFX 236 0 ෙනවා  . 
+SFX 236 0 ෙමි  .
+SFX 236 0 ෙන්නෙමි  . 
+SFX 236 0 ෙමු  .
+SFX 236 0 ෙන්නෙමු  . 
+SFX 236 0 ෙහි  .
+SFX 236 0 ෙන්නෙහි  . 
+SFX 236 0 ෙහු  .
+SFX 236 0 ෙන්නෙහු  . 
+SFX 236 0 ෙන්නේය  .
+SFX 236 0 ෙන්නීය  . 
+SFX 236 0 ෙන්නාය  .
+SFX 236 0 ෙති  . 
+SFX 236 0 ෙන්නෝය  .
+SFX 236 0 ෙන්න  . 
+SFX 236 0 ෙව  .
+SFX 236 0 ෙනු  .
+SFX 236 0 ෙපිය  . 
+SFX 236 0 ෙපන්  .
+SFX 236 0 ෙව්  . 
+SFX 236 0 ෙපියව්  .
+SFX 236 0 ෙපල්ලා  . 
+SFX 236 0 ෙනවාලා  .
+SFX 236 0 ෙයිලු  . 
+SFX 236 0 ෙන්නේලු  .
+SFX 236 0 ෙතිලු  . 
+SFX 236 0 ෙන්නෝලු  .
+SFX 236 0 ෙද්දෙන්  . 
+SFX 236 0 ෙපුවාවේ  .
+SFX 236 0 ෙපුදෙන්  .
+
+SFX 237 Y 17
+SFX 237 0   . 
+SFX 237 0 වා  . 
+SFX 237 0 ්නෙමි  .
+SFX 237 0 ්නෙමු  . 
+SFX 237 0 ්නෙහි  .
+SFX 237 0 ්නෙහු  .
+SFX 237 0 ්නේය  . 
+SFX 237 0 ්නීය  .
+SFX 237 0 ්නාය  .
+SFX 237 0 ්නෝය  . 
+SFX 237 0 ්න  .
+SFX 237 0 ු  .
+SFX 237 0 වාලා  . 
+SFX 237 0 ්නේලු  .
+SFX 237 0 ්නෝලු .
+SFX 237 0 ්නේ  .
+SFX 237 0 ්නට  .
+
+SFX 238 Y 11
+SFX 238 0   . 
+SFX 238 0 ා  . 
+SFX 238 0 වා  .
+SFX 238 0 ෙමි  . 
+SFX 238 0 ෙමු  . 
+SFX 238 0 ෙහි  .
+SFX 238 0 ෙහු  .
+SFX 238 0 ේය  . 
+SFX 238 0 ීය  . 
+SFX 238 0 ාය  . 
+SFX 238 0 ේාය  . 
+
+SFX 239 Y 6
+SFX 239 0 ි ී  . 
+SFX 239 0 මි  . 
+SFX 239 0 මු  .
+SFX 239 0 හ  . 
+SFX 239 0 යි  . 
+SFX 239 0 ති  .
+
 PFX 240 Y 1
 PFX 240 0 නො .
 
@@ -3929,14 +3991,137 @@ SFX 246 ා ෑව .
 SFX 246 0 පු .
 SFX 246 0 ලා .
 
-SFX 250 Y 1
-SFX 250 0 ගේ .
+SFX 247 Y 4 
+SFX 247 0   . 
+SFX 247 0 පු  .
+SFX 247 0 ූ  . 
+SFX 247 0 ිලා .
 
-SFX 251 Y 1
-SFX 251 0 ය .
+SFX 248 Y 29
+SFX 248 0 ෙන  . 
+SFX 248 0 ෙනා  .
+SFX 248 0 වෙන  .
+SFX 248 0 වෙනා  . 
+SFX 248 0 ුණ  . 
+SFX 248 0 ුණු  . 
+SFX 248 0 ිච්ච  .
+SFX 248 0 වුණු  .
+SFX 248 0 ිලා  .
+SFX 248 0 වී  .
+SFX 248 0 විලා  .
+SFX 248 0 ී  .
+SFX 248 0 ූ  .
+SFX 248 0 ්ව  .
+SFX 248 0 ෙමින්  . 
+SFX 248 0 වෙමින්  .
+SFX 248 0 ෙත්ම  .
+SFX 248 0 ෙමින්  .
+SFX 248 0 වෙත්ම  .
+SFX 248 0 ෙන්න  .
+SFX 248 0 ෙන්නට  .
+SFX 248 0 ීමට  .
+SFX 248 0 ෙත්  .
+SFX 248 0 ෙද්දී  .
+SFX 248 0 වෙද්දී  .
+SFX 248 0 ෙතොත්  .
+SFX 248 0 ෙතත්  .
+SFX 248 0 ුණොත්  .
+SFX 248 0 ුණත්  .
 
-SFX 252 Y 1
-SFX 252 0 ක් .
+SFX 249 Y 6
+SFX 249 0 නා  . 
+SFX 249 0 පු  .
+SFX 249 0 ා  .
+SFX 249 0 මින්  . 
+SFX 249 0 ත්ම  . 
+SFX 249 0 ද්දී  . 
+
+SFX 250 Y 41
+SFX 250 0 නවා  . 
+SFX 250 0 මි  .
+SFX 250 0 න්නෙමි  .
+SFX 250 0 මු  . 
+SFX 250 0 න්නෙමු  . 
+SFX 250 0 හි  . 
+SFX 250 0 න්නෙහි  . 
+SFX 250 0 හු  .
+SFX 250 0 න්නෙහු  .
+SFX 250 0 න්නේය  . 
+SFX 250 0 න්නීය  . 
+SFX 250 0 න්නාය  . 
+SFX 250 0 ති  .
+SFX 250 0 න්නෝය  .
+SFX 250 0 න්න  . 
+SFX 250 0 ව  . 
+SFX 250 0 නු  . 
+SFX 250 0 පිය  . 
+SFX 250 0 පන්  .
+SFX 250 0 ව්  .
+SFX 250 0 පියව්  . 
+SFX 250 0 පල්ලා  . 
+SFX 250 0 නවාලා  .
+SFX 250 0 යිලු  . 
+SFX 250 0 න්නේලු  . 
+SFX 250 0 තිලු  . 
+SFX 250 0 න්නෝලු  . 
+SFX 250 0 ද්දෙන්  .
+SFX 250 0 පුවාවේ  .
+SFX 250 0 පුදෙන්  . 
+SFX 250 0 ණෙමි  . 
+SFX 250 0 ණෙමු  . 
+SFX 250 0 ණෙහි  . 
+SFX 250 0 ණෙහු  . 
+SFX 250 0 ාපිය  .
+SFX 250 0 ාපන්  .
+SFX 250 0 ාපියව්  .
+SFX 250 0 ාපල්ලා  .
+SFX 250 0 ාපුවාවේ  .
+SFX 250 0 ාපුදෙන්  .
+SFX 250 0 ාවි  .
+
+SFX 251 Y 33
+SFX 251 0 ුණේය  . 
+SFX 251 0 ුණි  .
+SFX 251 0 ුණාය  .
+SFX 251 0 ුණෝය  . 
+SFX 251 0 ුණහ  . 
+SFX 251 0 ුණාලු  . 
+SFX 251 0 ුණේලු  . 
+SFX 251 0 ුණහලු  . 
+SFX 251 0 ුණෝලු  . 
+SFX 251 0 ුණාවේ  . 
+SFX 251 0 ුණදෙන්  . 
+SFX 251 0 ුනා  . 
+SFX 251 0 ුනෙමි  . 
+SFX 251 0 ුනෙමු  . 
+SFX 251 0 ුනෙහි  . 
+SFX 251 0 ුනෙහු  . 
+SFX 251 0 ුනේය  . 
+SFX 251 0 ුනි  . 
+SFX 251 0 ුනාය  . 
+SFX 251 0 ුනහ  . 
+SFX 251 0 ුනෝය  . 
+SFX 251 0 ුනාලු  . 
+SFX 251 0 ුනේලු  . 
+SFX 251 0 ුනහලු  . 
+SFX 251 0 ුනෝලු  . 
+SFX 251 0 ුනාවේ  . 
+SFX 251 0 ුනදෙන්  . 
+SFX 251 0 ිණ  . 
+SFX 251 0 ිණි  . 
+SFX 251 0 ියහ  . 
+SFX 251 0 ින  . 
+SFX 251 0 ිනි  . 
+SFX 251 0 ීය  . 
+
+SFX 270 Y 1
+SFX 270 0 ගේ .
+
+SFX 271 Y 1
+SFX 271 0 ය .
+
+SFX 272 Y 1
+SFX 272 0 ක් .
 
 SFX 300 Y 3
 SFX 300 0   .
