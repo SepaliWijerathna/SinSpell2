@@ -10,4 +10,4 @@ class correction(object):
 class CorrectorSerializer(serializers.Serializer):
     word = serializers.CharField()
     status = serializers.CharField()
-    suggestions = serializers.CharField()
+    suggestions = serializers.JSONField()

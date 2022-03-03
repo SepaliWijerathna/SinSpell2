@@ -13,7 +13,7 @@ def detector_fun(word):
     test_string = ''.join(i for i in file_content if not i in characters)
 
 
-    word_list = test_string.split(" ")
+    word_list = file_content.split(" ")
     print(word_list)
     incorrect_word_list = []
     correct_word_list = []

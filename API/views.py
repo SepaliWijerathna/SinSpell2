@@ -10,12 +10,14 @@ from django.shortcuts import render, HttpResponse
 from API.spylls.examples.basic import detector_fun
 from .serializer import CorrectorSerializer
 from .serializer import correction
+from rest_framework.response import Response
 import urllib.request
 
 
 
 @api_view(['GET', 'POST'])
 def listcorrection(request):
+    print("hi")
     if request.method == "GET":
         word = str(request.GET.get("words",False))
         correctionList=Detector(word)
@@ -26,10 +28,11 @@ def listcorrection(request):
         print(obj_all)
         serializer_class=CorrectorSerializer(obj_all,many=True)
         y= serializer_class.data
-        return JsonResponse(y,safe=False)
+        return Response(y)
 
 def formatSuggestions(suggestions, incorrect_word_list, correct_word_list, word_list):
     result_all = []
+    print(suggestions)
     for i in range(len(word_list)):
         if word_list[i] in correct_word_list:
             result = []
@@ -38,24 +41,35 @@ def formatSuggestions(suggestions, incorrect_word_list, correct_word_list, word_
             result.append([ ])
             result_all.append(result)
         else:
-            result=[]
-            j=incorrect_word_list.index(word_list[i])
-            result.append(word_list[i])
-            result.append("incorrect")
-            result.append(suggestions[j])
-            result_all.append(result)
+                result=[]
+                j=incorrect_word_list.index(word_list[i])
+                result.append(word_list[i])
+                if len(suggestions[j])==1:
+                    result.append("autocorrect")
+                    result.append(suggestions[j][0])
+                    
+                else:
+                    result.append("incorrect")
+                    result.append(suggestions[j])
+                result_all.append(result)
+           
     return result_all
 
 
 def Detector(word):
-    incorrect_word_list, correct_word_list, word_list = detector_fun(word)
-    
+    print(word)
+    incorrect_word_list,correct_word_list, word_list = detector_fun(word)
+    # incorrect_word_list=[]
+    # correct_word_list=[]
+    # txt="මෙකි සදහන් පැහැදිළි අරමුන දීර්ග අධිකාරී මුල්‍ය අධිකාරී පරන සරළ මඳක් සොදුරු ඉහලම කදු වියලි නිහඩ විමර්ශණ මුලුමනින්ම පුජ්‍ය දක්ෂිනාංශික නිශ්පාදන ජිවන වර්ථමාන සාමන්‍ය ජේෂ්ඨ නුතන ඝණ අක්‍රීය ගෘහස්ත සෑඩපහර න්‍යෂ්ඨික ඥාණසාර නිළධාරී සමාන්‍ය ධිවර සැබැ ක්ෂනික කිතුණු ශිෂ්ඨ සාර්තක පිරිසිඳු වදාල තාක්ෂනික සැළසුම් මර්ධනය තිරණය ප්‍රර්ථනා ආකර්ශනය ප්‍රතික්ශේප ඇනවුම් ඈති හොද තුලින් ගානක් ගනන් කලේය පිලිතුරු ආන්ඩුව හොදට හොදම තිබුනත් පිලිබදව ඇතුලත පිලිබද යලිත් ආන්ඩුවේ කලාට දඩුවම් කදුළු යාලුවා පළතුරු ඉඩම්රු"
+    # incorrect_word_list=txt.split(" ")
+    print(incorrect_word_list)
     if incorrect_word_list != []:
         suggestions = Suggestions(incorrect_word_list)
-   
-    response_data = formatSuggestions( suggestions, incorrect_word_list, correct_word_list, word_list)
+        response_data = formatSuggestions( suggestions, incorrect_word_list, correct_word_list, word_list)
 
-    return (response_data)
+        return (response_data)
+    
     # return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 
@@ -309,14 +323,24 @@ def ranking(tmp_corrections):
     count_all = tmp_corrections[-1]
     for i in range(len(tmp_corrections)-1):
         val = (tmp_corrections[i][3]*tmp_corrections[i][4]*100)/count_all
+       
         val_list = [tmp_corrections[i][0], val]
         rank_dic.append(val_list)
     rank_dic.sort(key=lambda row: (row[-1]), reverse=True)
+    # print(rank_dic)
     rank_dic_suggestions = []
+    # j=0
     for i in rank_dic:
-        rank_dic_suggestions.append(i[0])
-    # print(rank_dic_suggestions)
-    return rank_dic_suggestions
+        if i[1]>=99:
+            # key=j
+            rank_dic_suggestions.append(i[0])
+            break
+        else:
+            # key=j
+            rank_dic_suggestions.append(i[0])
+            # j=j+1
+    print(rank_dic_suggestions[:5])
+    return rank_dic_suggestions[:5]
 
 
 def Suggestions(incorrect_word_list):
@@ -331,5 +355,5 @@ def Suggestions(incorrect_word_list):
             my_word, word_count_dict, error_count_dict)
         Suggestions = ranking(tmp_corrections)
         all_suggetions.append(Suggestions)
-    print(all_suggetions)
+    
     return all_suggetions

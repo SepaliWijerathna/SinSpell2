@@ -20,5 +20,5 @@ from API.views import Detector,listcorrection
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',listcorrection),
+    path('home/',listcorrection),
 ]
