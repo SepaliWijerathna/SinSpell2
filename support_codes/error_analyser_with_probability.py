@@ -9,12 +9,13 @@ delete_error_dict={}
 insert_error_dict={}
 replace_error_dict ={}
 switch_error_dict={}
+word_sep_dict={}
 
 def process_data(file_name):
     read_data = open(file_name,encoding="utf-8").read()
     return read_data
 
-vocab = process_data("Error_Corrector/text_data/correct_unique_words.txt")
+vocab = process_data("correct_unique_words.txt")
 
 def get_count(vocab):
     vocab=vocab.splitlines( )
@@ -29,7 +30,7 @@ def get_count(vocab):
         try:
             value=int(word[1])
         except:
-            print(key)
+            #print(key)
             print('Can not convert', str ,"to int")
 
         word_count_dict[key] = value
@@ -163,13 +164,13 @@ def get_corrections_replace(my_word, word_count_dict):
 
   return suggestions
 
-print(get_corrections_replace("ලමයා", word_count_dict))
+#print(get_corrections_replace("ලමයා", word_count_dict))
 
 """Insert letter"""
 
 def delete_letter(word):
     
-    letters = '්ාෘුැූෑිීෙේෛොෝෞෘෲෟෳංඃකගඛඝඞඟචඡජඣඤඥඦටඨඩඪණඬතථදධනඳපඵබභමඹයරලළව‍ශෂසෆක්‍ෂඅආඇඈඉඊඋඌාඑඒඓඔඕඖඍඎඏඐංඃ'
+    letters = '්ාෘුැූෑිීෙේෛොෝෞෘෲෟෳංඃකගඛඝඞඟචඡජඣඤඥඦටඨඩඪණඬතථදධනඳපඵබභමඹයරලළව‍ශෂසෆක්‍ෂඅආඇඈඉඊඋඌාඑඒඓඔඕඖඍඎඏඐංඃ '
     insert_l = []
     split_l = []
     
@@ -205,7 +206,56 @@ def get_corrections_delete(my_word, word_count_dict):
 
   return suggestions
 
-print(get_corrections_delete("ලමයා", word_count_dict))
+#print(get_corrections_delete("ලමයා", word_count_dict))
+
+"""word seperation"""
+
+def delete_space(word):    
+    letters = ' '
+    insert_l = []
+    split_l = []
+    for i in range(1,len(word)):
+        #print ([word[0:i]])
+        split_l.append([word[:i],word[i:]])
+    
+    #print (split_l)
+    for c in letters:
+        for R,L in split_l:
+            if ( (R !=word) or (L != word)):
+                new_word = R + " " + L
+            #print(new_word)
+            
+                #print(new_word)
+                insert_l.append(new_word)
+                #insert_l.append("del (' ')")
+            
+                
+    
+    return insert_l
+#delete_space("මේබව")
+#print(delete_space("ලිපිනයක්දුරකතන"))
+
+def get_corrections_delete_space(my_word, word_count_dict):
+    edit_one_letter= delete_space(my_word) 
+    suggestions = []
+    #print(edit_one_letter)
+    for word1 in edit_one_letter:
+        word = []
+        new_word = ""
+        space_error=[]
+        
+        word = word1.split(" ")
+        
+        if ((word[0] in word_count_dict) and (word[1] in word_count_dict)):
+            new_word = (word[0] + " " + word[1])
+            space_error.append(new_word)
+            space_error.append((word_count_dict.get(word[0]) + word_count_dict.get(word[1]))/2)
+            space_error.append('word_sep (' ')')
+            space_error.append(my_word)
+            # print(suggestions)
+            suggestions.append(space_error)
+
+    return suggestions
 
 def edit_one_letter(word, allow_switches = True):
    
@@ -215,7 +265,8 @@ def edit_one_letter(word, allow_switches = True):
     delete_word_l = get_corrections_delete(word,word_count_dict)
     replace_word_l= get_corrections_replace(word,word_count_dict)
     insert_word_l= get_corrections_insert(word,word_count_dict)
-    edit_one_set_list = switch_word_l+delete_word_l+replace_word_l+insert_word_l
+    space_word_l = get_corrections_delete_space(word,word_count_dict)
+    edit_one_set_list = switch_word_l+delete_word_l+replace_word_l+insert_word_l+space_word_l
    
     return edit_one_set_list
 
@@ -225,7 +276,7 @@ def get_corrections(my_word, word_count_dict):
     suggestions = []
     n_best = []
     tmp_edit_one_set = edit_one_letter(my_word)
-    print(tmp_edit_one_set)
+    #print(tmp_edit_one_set)
     
     return tmp_edit_one_set
 
@@ -283,19 +334,27 @@ def get_corrections(my_word, word_count_dict):
 
 
 suggestion_faild=[]
-error_word = process_data(r'Data_Procssing/text_data/error_words.txt')
+error_word = process_data(r'error_words.txt')
 error_word= error_word.splitlines( )
+
+  
+  
+#error_word = "ලිපිනයක්දුරකතන 5"
+#my_word = error_word.split(' ')[0]
+#tmp_corrections = get_corrections(my_word, word_count_dict)
+#print(tmp_corrections)
 for word in error_word: 
   try:
     my_word = word.split(' ')[0]
     tmp_corrections = get_corrections(my_word, word_count_dict)
-    # print(tmp_corrections)
+    #print(tmp_corrections)
+    
     error_word_frq=int(int(word.split(' ')[1]))
     suggest_words_frq=0
     for i in tmp_corrections:
       suggest_words_frq = error_word_frq+int(i[1])
     
-
+    
     for i in tmp_corrections:
       if i[2][0]=='t':
         if i[2] in switch_error_dict:
@@ -331,6 +390,16 @@ for word in error_word:
         else: 
           key = i[2]
           replace_error_dict[key]=error_word_frq*(i[1]/suggest_words_frq)
+
+      elif i[2][0]=='w':
+        if i[2] in word_sep_dict:
+
+          key=i[2]
+          val=word_sep_dict[key]
+          word_sep_dict[key]=val+error_word_frq*(i[1]/suggest_words_frq)
+        else: 
+          key = i[2]
+          word_sep_dict[key]=error_word_frq*(i[1]/suggest_words_frq)
    
   except:
     suggestion_faild.append(word)
@@ -344,6 +413,11 @@ delete_error_dict=(dict(sorted(delete_error_dict.items(), key=lambda item: item[
 insert_error_dict=(dict(sorted(insert_error_dict.items(), key=lambda item: item[1])))
 replace_error_dict=(dict(sorted(replace_error_dict.items(), key=lambda item: item[1])))
 switch_error_dict=(dict(sorted(switch_error_dict.items(), key=lambda item: item[1])))
+word_sep_dict=(dict(sorted(word_sep_dict.items(), key=lambda item: item[1])))
+
+print(word_sep_dict)
+
+
 
 with open('error_analyser.txt', 'w',encoding="utf-8") as f: 
     for key, value in delete_error_dict.items(): 
@@ -353,6 +427,8 @@ with open('error_analyser.txt', 'w',encoding="utf-8") as f:
     for key, value in replace_error_dict.items(): 
         f.write('%s %s\n' % (key, value))
     for key, value in switch_error_dict.items(): 
+        f.write('%s %s\n' % (key, value))
+    for key, value in word_sep_dict.items(): 
         f.write('%s %s\n' % (key, value))
 
 delete_word={}
