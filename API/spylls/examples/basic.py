@@ -21,7 +21,7 @@ def detector_fun(word):
 
     for word in word_list:
         if dictionary.lookup(word):
-            # print("correct")
+            print("correct")
             correct_word_list.append(word)
         else: 
             # print("Incorrect")   

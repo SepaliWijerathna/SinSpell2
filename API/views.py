@@ -14,64 +14,59 @@ from rest_framework.response import Response
 import urllib.request
 
 
-
 @api_view(['GET', 'POST'])
 def listcorrection(request):
-    print("hi")
     if request.method == "GET":
-        word = str(request.GET.get("words",False))
-        correctionList=Detector(word)
-        obj_all=[]
+        word = str(request.GET.get("words", False))
+        correctionList = Detector(word)
+        print(correctionList)
+        obj_all = []
         for i in correctionList:
-            obj= correction(word=i[0],status=i[1],suggestions=i[2])
+            obj = correction(word=i[0], status=i[1], suggestions=i[2])
             obj_all.append(obj)
         print(obj_all)
-        serializer_class=CorrectorSerializer(obj_all,many=True)
-        y= serializer_class.data
+        serializer_class = CorrectorSerializer(obj_all, many=True)
+        y = serializer_class.data
         return Response(y)
+
 
 def formatSuggestions(suggestions, incorrect_word_list, correct_word_list, word_list):
     result_all = []
-    print(suggestions)
     for i in range(len(word_list)):
         if word_list[i] in correct_word_list:
             result = []
             result.append(word_list[i])
             result.append("correct")
-            result.append([ ])
+            result.append([])
             result_all.append(result)
         else:
-                result=[]
-                j=incorrect_word_list.index(word_list[i])
-                result.append(word_list[i])
-                if len(suggestions[j])==1:
-                    result.append("autocorrect")
-                    result.append(suggestions[j][0])
-                    
-                else:
-                    result.append("incorrect")
-                    result.append(suggestions[j])
-                result_all.append(result)
-           
+            result = []
+            j = incorrect_word_list.index(word_list[i])
+            result.append(word_list[i])
+            if len(suggestions[j]) == 1:
+                result.append("autocorrect")
+                result.append(suggestions[j][0])
+
+            else:
+                result.append("incorrect")
+                result.append(suggestions[j])
+            result_all.append(result)
+
     return result_all
 
 
 def Detector(word):
-    print(word)
-    incorrect_word_list,correct_word_list, word_list = detector_fun(word)
-    # incorrect_word_list=[]
-    # correct_word_list=[]
-    # txt="මෙකි සදහන් පැහැදිළි අරමුන දීර්ග අධිකාරී මුල්‍ය අධිකාරී පරන සරළ මඳක් සොදුරු ඉහලම කදු වියලි නිහඩ විමර්ශණ මුලුමනින්ම පුජ්‍ය දක්ෂිනාංශික නිශ්පාදන ජිවන වර්ථමාන සාමන්‍ය ජේෂ්ඨ නුතන ඝණ අක්‍රීය ගෘහස්ත සෑඩපහර න්‍යෂ්ඨික ඥාණසාර නිළධාරී සමාන්‍ය ධිවර සැබැ ක්ෂනික කිතුණු ශිෂ්ඨ සාර්තක පිරිසිඳු වදාල තාක්ෂනික සැළසුම් මර්ධනය තිරණය ප්‍රර්ථනා ආකර්ශනය ප්‍රතික්ශේප ඇනවුම් ඈති හොද තුලින් ගානක් ගනන් කලේය පිලිතුරු ආන්ඩුව හොදට හොදම තිබුනත් පිලිබදව ඇතුලත පිලිබද යලිත් ආන්ඩුවේ කලාට දඩුවම් කදුළු යාලුවා පළතුරු ඉඩම්රු"
-    # incorrect_word_list=txt.split(" ")
-    print(incorrect_word_list)
+    incorrect_word_list, correct_word_list, word_list = detector_fun(word)
+
     if incorrect_word_list != []:
         suggestions = Suggestions(incorrect_word_list)
-        response_data = formatSuggestions( suggestions, incorrect_word_list, correct_word_list, word_list)
+        response_data = formatSuggestions(
+            suggestions, incorrect_word_list, correct_word_list, word_list)
+    else:
+        response_data = formatSuggestions(
+            [], incorrect_word_list, correct_word_list, word_list)
 
-        return (response_data)
-    
-    # return HttpResponse(json.dumps(response_data), content_type="application/json")
-
+    return (response_data)
 
 # Need to change location
 
@@ -88,8 +83,6 @@ def get_count(vocab):
         word = vocab[i].split(" ")
         if(vocab[i] == ''):
             continue
-        if word[0] == 'තත්වයන්':
-            print('hi')
         key = word[0]
         try:
             value = int(word[1])
@@ -111,7 +104,6 @@ def get_error_count(type):
         try:
             value = int(word[1])
         except:
-            print(key)
             print('Can not convert', str, "to int")
 
         error_count_dict[key] = value
@@ -264,7 +256,6 @@ def get_corrections_delete(my_word, word_count_dict):
     suggestions = []
     n_best = []
     edit_one_letter = delete_letter(my_word)
-    # print(edit_one_letter)
 
     for word1 in edit_one_letter:
         if word1[0] in word_count_dict and word1 not in suggestions:
@@ -272,7 +263,6 @@ def get_corrections_delete(my_word, word_count_dict):
             insert_error.append(word1[0])
             insert_error.append(word1[1])
             insert_error.append(my_word)
-            # print(suggestions)
             suggestions.append(insert_error)
 
     return suggestions
@@ -307,7 +297,7 @@ def get_corrections(my_word, word_count_dict, error_count_dict):
         try:
             error_count = error_count_dict[words[1]]
         except:
-            error_count = 0
+            error_count = 1
         words.append(error_count)
         count_all = count_all+count*error_count
         n_best.append(words)
@@ -323,23 +313,17 @@ def ranking(tmp_corrections):
     count_all = tmp_corrections[-1]
     for i in range(len(tmp_corrections)-1):
         val = (tmp_corrections[i][3]*tmp_corrections[i][4]*100)/count_all
-       
+
         val_list = [tmp_corrections[i][0], val]
         rank_dic.append(val_list)
     rank_dic.sort(key=lambda row: (row[-1]), reverse=True)
-    # print(rank_dic)
     rank_dic_suggestions = []
-    # j=0
     for i in rank_dic:
-        if i[1]>=99:
-            # key=j
+        if i[1] >= 99:
             rank_dic_suggestions.append(i[0])
             break
         else:
-            # key=j
             rank_dic_suggestions.append(i[0])
-            # j=j+1
-    print(rank_dic_suggestions[:5])
     return rank_dic_suggestions[:5]
 
 
@@ -355,5 +339,5 @@ def Suggestions(incorrect_word_list):
             my_word, word_count_dict, error_count_dict)
         Suggestions = ranking(tmp_corrections)
         all_suggetions.append(Suggestions)
-    
+
     return all_suggetions
