@@ -2,5 +2,5 @@ django
 numpy
 pandas
 spylls
-
-pip3 install django-cors-headers
+django-cors-headers
+djangorestframework

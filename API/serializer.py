@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 class correction(object):
     def __init__(self, word, status, suggestions):
-        print(word)
+        #print(word)
         self.word = word
         self.status = status
         self.suggestions = suggestions
