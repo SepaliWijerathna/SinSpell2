@@ -69,7 +69,8 @@ def second_error_suggestion(word):
         else:
             edit.append(1)
     one_edit_word_list_with_error.sort(key=lambda row: (row[3]), reverse=True)
-    #print(one_edit_word_list_with_error[0:50])
+    one_edit_word_list_with_error = one_edit_word_list_with_error[:100]
+    #print(one_edit_word_list_with_error[0:100])
     #print(edit)
     two_edit_word_list_with_error = []
     for word_error in one_edit_word_list_with_error:
