@@ -27,7 +27,7 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
-$env:VIRTUAL_ENV="E:\Final year Project\final-back-end\SinSpell2\djangoenv1"
+$env:VIRTUAL_ENV="E:\Final year Project\SinSpell-final\SinSpell2\djangoenv1"
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name

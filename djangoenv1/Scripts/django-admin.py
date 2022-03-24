@@ -1,4 +1,4 @@
-#!e:\final year project\final-back-end\sinspell2\djangoenv1\scripts\python.exe
+#!e:\final year project\sinspell-final\sinspell2\djangoenv1\scripts\python.exe
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

@@ -2,3 +2,5 @@ django
 numpy
 pandas
 spylls
+django-cors-headers
+djangorestframework
