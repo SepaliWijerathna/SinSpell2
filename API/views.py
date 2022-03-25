@@ -1,3 +1,4 @@
+from enum import unique
 from django.http import JsonResponse
 from django.http.response import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import render, HttpResponse
@@ -16,9 +17,6 @@ import urllib.request
 global one_error_failed_list
 global word_count_dict
 global error_count_dict
-one_error_failed_list =[]
-word_count_dict = []
-error_count_dict = []
 
 @api_view(['GET', 'POST'])
 def listcorrection(request):
@@ -36,7 +34,7 @@ def listcorrection(request):
         y= serializer_class.data
         return Response(y)
 
-def formatSuggestions(suggestions, incorrect_word_list, correct_word_list, word_list):
+def formatSuggestions(suggestions, incorrect_word_list, correct_word_list, word_list, auto_consider_value):
     result_all = []
     #print(suggestions)
     for i in range(len(word_list)):
@@ -51,8 +49,12 @@ def formatSuggestions(suggestions, incorrect_word_list, correct_word_list, word_
                 j=incorrect_word_list.index(word_list[i])
                 result.append(word_list[i])
                 if len(suggestions[j])==1:
-                    result.append("autocorrect")
-                    result.append(suggestions[j][0])
+                    if auto_consider_value == 1:
+                        result.append("autocorrect")
+                        result.append(suggestions[j][0])
+                    elif auto_consider_value == 2:
+                        result.append("incorrect")
+                        result.append(suggestions[j])
                     
                 else:
                     result.append("incorrect")
@@ -66,51 +68,60 @@ def second_error_suggestion(word):
     #print(one_edit_word_list_with_error)
     for edit in one_edit_word_list_with_error:
         edit.append(word)
-        #print(edit)
+        if (edit[1] in error_count_dict):
+            edit.append(error_count_dict[edit[1]])
+        else:
+            edit.append(1)
+    one_edit_word_list_with_error.sort(key=lambda row: (row[3]), reverse=True)
+    one_edit_word_list_with_error = one_edit_word_list_with_error[:100]
+    #print(one_edit_word_list_with_error[0:100])
+    #print(edit)
     two_edit_word_list_with_error = []
     for word_error in one_edit_word_list_with_error:
         replace_two_l_list = replace_letter(word_error[0],2)
         delete_two_l_list = delete_letter(word_error[0],2)
         two_edit_word_list_with_error += replace_two_l_list + delete_two_l_list
         #print(two_edit_word_list_with_error)
+        #print("hfkjn")
     
-    two_corrections = get_two_edit_correction(word,two_edit_word_list_with_error)
+    two_corrections = get_two_edit_correction(word,one_edit_word_list_with_error, two_edit_word_list_with_error)
     #print (two_corrections)
     suggest_list = ranking(two_corrections)
+    #print(suggest_list)
     return suggest_list
 
 
 def Detector(word):
     #print(word)
     incorrect_word_list,correct_word_list, word_list = detector_fun(word)
-    #print(incorrect_word_list)
-    # incorrect_word_list=[]
-    # correct_word_list=[]
-    # txt="මෙකි සදහන් පැහැදිළි අරමුන දීර්ග අධිකාරී මුල්‍ය අධිකාරී පරන සරළ මඳක් සොදුරු ඉහලම කදු වියලි නිහඩ විමර්ශණ මුලුමනින්ම පුජ්‍ය දක්ෂිනාංශික නිශ්පාදන ජිවන වර්ථමාන සාමන්‍ය ජේෂ්ඨ නුතන ඝණ අක්‍රීය ගෘහස්ත සෑඩපහර න්‍යෂ්ඨික ඥාණසාර නිළධාරී සමාන්‍ය ධිවර සැබැ ක්ෂනික කිතුණු ශිෂ්ඨ සාර්තක පිරිසිඳු වදාල තාක්ෂනික සැළසුම් මර්ධනය තිරණය ප්‍රර්ථනා ආකර්ශනය ප්‍රතික්ශේප ඇනවුම් ඈති හොද තුලින් ගානක් ගනන් කලේය පිලිතුරු ආන්ඩුව හොදට හොදම තිබුනත් පිලිබදව ඇතුලත පිලිබද යලිත් ආන්ඩුවේ කලාට දඩුවම් කදුළු යාලුවා පළතුරු ඉඩම්රු"
-    # incorrect_word_list=txt.split(" ")
-    #print(incorrect_word_list)
+    auto_consider_value = 0
 
     if incorrect_word_list != []:
         suggestions = Suggestions(incorrect_word_list)
+        auto_consider_value = 1
+        #print(one_error_failed_list)
         #print(suggestions)
-        secoond_suggestions = []
+        second_suggestions = []
         for suggestion in suggestions:
             #print("jdkfnlw")
             if suggestion == []:
                 for word in one_error_failed_list:
-                    #print(one_error_failed_list)
+                    #print(word)
                     suggest_list = second_error_suggestion(word)
-
                     #print(suggest_list)
                     word_index = incorrect_word_list.index(word)
-                    secoond_suggestions.insert(word_index, suggest_list)
-
+                    second_suggestions.append([word_index, suggest_list])
+        #print(second_suggestions)
+        for sugg in second_suggestions:
+            auto_consider_value = 2
+            suggestions[sugg[0]] = sugg[1]
+        #print(suggestions)
 
             
     else:
         suggestions = []
         
-    response_data = formatSuggestions( suggestions, incorrect_word_list, correct_word_list, word_list)
+    response_data = formatSuggestions( suggestions, incorrect_word_list, correct_word_list, word_list, auto_consider_value)
     return (response_data)
     
     # return HttpResponse(json.dumps(response_data), content_type="application/json")
@@ -243,7 +254,7 @@ def replace_letter(word, value):
     if (value == 1):
         letters = '්ාෘුැූෑිීෙේෛොෝෞෘෲෟෳංඃකගඛඝඞඟචඡජඣඤඥඦටඨඩඪණඬතථදධනඳපඵබභමඹයරලළව‍ශෂසෆක්‍ෂඅආඇඈඉඊඋඌාඑඒඓඔඕඖඍඎඏඐංඃ'
     else:
-        letters = 'ේෙෙොෙේෝොුූිීණකනලළඳදතධථතබභඟගෂශටඨඬඩජචඝඛඪ'
+        letters = 'ේෙොේෝුූිීණකනලළඳදතධථතබභඟගෂශටඨඬඩජචඝඛඪ'
     replace_l = []
     split_l = []
 
@@ -292,7 +303,7 @@ def delete_letter(word, value):
     if (value == 1):
         letters = '්ාෘුැූෑිීෙේෛොෝෞෘෲෟෳංඃකගඛඝඞඟචඡජඣඤඥඦටඨඩඪණඬතථදධනඳපඵබභමඹයරලළව‍ශෂසෆක්‍ෂඅආඇඈඉඊඋඌාඑඒඓඔඕඖඍඎඏඐංඃ'
     elif (value == 2):
-        letters = 'ේෙෙොෙේෝොුූිීණකනලළඳදතධථතබභඟගෂශටඨඬඩජචඝඛඪ'
+        letters = 'ේෙොේෝුූිීාය'
     insert_l = []
     split_l = []
 
@@ -367,7 +378,7 @@ def get_corrections_delete_space(my_word, word_count_dict, error_count_dict):
             space_error.append(new_word)
             space_error.append('word_sep (' ')')
             space_error.append(my_word)
-            space_error.append(int((word_count_dict.get(word[0]) + word_count_dict.get(word[1]))/2))
+            space_error.append(int(min(word_count_dict.get(word[0]),word_count_dict.get(word[1]))))
             error_count = error_count_dict['word_sep(' ')']
             space_error.append(error_count)
             
@@ -439,8 +450,9 @@ def ranking(tmp_corrections):
        
         val_list = [tmp_corrections[i][0], val]
         rank_dic.append(val_list)
+    #print(rank_dic)
     rank_dic.sort(key=lambda row: (row[-1]), reverse=True)
-    # print(rank_dic)
+    #print(rank_dic)
     rank_dic_suggestions = []
     # j=0
     for i in rank_dic:
@@ -457,10 +469,14 @@ def ranking(tmp_corrections):
 
 
 def Suggestions(incorrect_word_list):
+    global word_count_dict
+    global error_count_dict
     vocab = process_data("API/data/correct_unique_words.txt")
     type = process_data("API/data/error_analyser.txt")
     word_count_dict = get_count(vocab)
     error_count_dict = get_count(type)
+    global one_error_failed_list
+    one_error_failed_list = []
     all_suggetions = []
     for word in incorrect_word_list:
         my_word = word
@@ -487,18 +503,21 @@ def getone_edit_word_list(word):
 
     return one_edit_word_list_with_error
 
-def get_two_edit_correction(my_word,edit_list):
+def get_two_edit_correction(my_word,one_edit_list, two_edit_list):
     correct_edits = []
-    with open('text.txt', 'w', encoding="utf-8") as f:
-        for i in edit_list:
-            f.write('%s %s\n' % (i[0], i[1]))
-    for words in edit_list:
+    for words in two_edit_list:
         if ((words[0] in word_count_dict) and (words not in correct_edits)):
             correct_edits.append(words)
-    print(correct_edits)
+    unique_word = []
+    unique_word_list = []
+    #print(correct_edits)
+    for word in correct_edits:
+        if (word[0] not in unique_word):
+            unique_word.append(word[0])
+            unique_word_list.append(word)
     count_all = 0
     n_best = []
-    for words in correct_edits:
+    for words in unique_word_list:
         words.append(my_word)
         count = word_count_dict[words[0]]
         words.append(count)
@@ -510,5 +529,5 @@ def get_two_edit_correction(my_word,edit_list):
         count_all = count_all+count*error_count
         n_best.append(words)
     n_best.append(count_all)
-    #(n_best)
+    #print(n_best)
     return n_best
