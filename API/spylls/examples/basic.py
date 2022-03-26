@@ -12,22 +12,22 @@ def detector_fun(file_content):
     # test_string = ''.join(i for i in file_content if not i in characters)
 
 
-    word_list = file_content.split(" ")
+    check_list = file_content.split(" ")
     incorrect_word_list = []
     correct_word_list = []
     # result = file_content
-    check_list = []
+    word_list = []
     print(word_list)
-    for item in word_list:
+    for item in check_list:
         if item!="":
             if item[-1] == ".":
-                check_list.append(item[:-1])
-                check_list.append(item[-1:])
+                word_list.append(item[:-1])
+                word_list.append(item[-1:])
             else: 
-                check_list.append(item)
-    print(check_list)
+                word_list.append(item)
+    print(word_list)
 
-    for word in check_list:
+    for word in word_list:
         if dictionary.lookup(word):            
             correct_word_list.append(word)
         else:            
