@@ -29,7 +29,19 @@ def listcorrection(request):
         for i in correctionList:
             obj= correction(word=i[0],status=i[1],suggestions=i[2])
             obj_all.append(obj)
-        #(obj_all)
+        #correctionList = [['අධකරි', 'incorrect', ['අධිකාරි']]]
+        for wordDetail in correctionList:
+            if wordDetail[1] == 'correct':
+                with open("Correct-rslt.txt", 'a', encoding='utf-8') as f:
+                    f.write(wordDetail[0]+ '\n')
+            elif wordDetail[1] == 'incorrect':
+                with open("Incorrect-rslt.txt", 'a', encoding='utf-8') as f:
+                    f.write(wordDetail[0] + " --> Suggestions : " + (','.join(wordDetail[2])) + '\n')
+            elif wordDetail[1] == 'autocorrect':
+                with open("Autocorrect-rslt.txt", 'a', encoding='utf-8') as f:
+                    f.write(wordDetail[0]+ '\n')
+
+        
         serializer_class=CorrectorSerializer(obj_all,many=True)
         y= serializer_class.data
         return Response(y)
@@ -47,10 +59,18 @@ def formatSuggestions(suggestions, incorrect_word_list, correct_word_list, word_
         else:
                 result=[]
                 j=incorrect_word_list.index(word_list[i])
+                auto_consider_value = suggestions[j][-1]
+                suggestions[j].remove(auto_consider_value)
                 result.append(word_list[i])
                 if len(suggestions[j])==1:
-                    result.append("autocorrect")
-                    result.append(suggestions[j][0])
+                    #print(suggestions[j])
+                    #print (auto_consider_value)
+                    if auto_consider_value == 1:
+                        result.append("autocorrect")
+                        result.append(suggestions[j][0])
+                    elif auto_consider_value == 2:
+                        result.append("incorrect")
+                        result.append(suggestions[j])
                     
                 else:
                     result.append("incorrect")
@@ -78,6 +98,7 @@ def second_error_suggestion(word):
         delete_two_l_list = delete_letter(word_error[0],2)
         two_edit_word_list_with_error += replace_two_l_list + delete_two_l_list
         #print(two_edit_word_list_with_error)
+        #print("hfkjn")
     
     two_corrections = get_two_edit_correction(word,one_edit_word_list_with_error, two_edit_word_list_with_error)
     #print (two_corrections)
@@ -89,6 +110,7 @@ def second_error_suggestion(word):
 def Detector(word):
     #print(word)
     incorrect_word_list,correct_word_list, word_list = detector_fun(word)
+    auto_consider_value = 0
 
     if incorrect_word_list != []:
         suggestions = Suggestions(incorrect_word_list)
@@ -96,22 +118,24 @@ def Detector(word):
         #print(suggestions)
         second_suggestions = []
         for suggestion in suggestions:
-            #print("jdkfnlw")
             if suggestion == []:
                 for word in one_error_failed_list:
+                    #print(word)
                     suggest_list = second_error_suggestion(word)
                     #print(suggest_list)
                     word_index = incorrect_word_list.index(word)
+                    suggest_list.append(2)
                     second_suggestions.append([word_index, suggest_list])
-        #print(second_suggestions)
+        for suggestion in suggestions:
+            suggestion.append(1)
         for sugg in second_suggestions:
             suggestions[sugg[0]] = sugg[1]
-        #print(suggestions)
+        print(suggestions)
 
             
     else:
         suggestions = []
-        
+    
     response_data = formatSuggestions( suggestions, incorrect_word_list, correct_word_list, word_list)
     return (response_data)
     
@@ -501,7 +525,8 @@ def get_two_edit_correction(my_word,one_edit_list, two_edit_list):
             correct_edits.append(words)
     unique_word = []
     unique_word_list = []
-
+    print("ehwbfj")
+    print(correct_edits)
     for word in correct_edits:
         if (word[0] not in unique_word):
             unique_word.append(word[0])
@@ -520,5 +545,5 @@ def get_two_edit_correction(my_word,one_edit_list, two_edit_list):
         count_all = count_all+count*error_count
         n_best.append(words)
     n_best.append(count_all)
-    #(n_best)
+    #print(n_best)
     return n_best

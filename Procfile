@@ -1,0 +1,1 @@
+web: gunicorn SinSpell2.wsgi
